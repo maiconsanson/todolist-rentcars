@@ -10,7 +10,7 @@
         SEARCH BOX
         ////////////////////////
        -->
-      <div class="search-box">
+      <div class="input-box">
         <form @submit.prevent="addItem()">
           <input
             v-model="itemTyped"
@@ -44,22 +44,23 @@
           >
             {{ item.name }}
             <span class="options">
-              <img
-                class="icon"
-                src="/icon-check.svg"
-                alt="Complete task"
-                @click="completeItem(item)"
-              />
-              <img
-                class="icon"
-                src="/icon-delete.svg"
-                alt="Delete task"
-                @click="removeItem(item)"
-              />
+              <button @click="removeItem(item)" class="remove-item">
+                <img
+                  class="icon"
+                  src="/icon-delete.svg"
+                  alt="Delete task"
+                />
+              </button>
+              <button @click="completeItem(item)" class="complete-item">
+                <img
+                  class="icon"
+                  src="/icon-check.svg"
+                  alt="Complete task"
+                />
+              </button>
             </span>
           </li>
         </transition-group>
-        <!-- <li v-if="noMoreItems" class="alert">No more items, please!</li> -->
       </ul>
     </div>
   </div>

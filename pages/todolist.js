@@ -36,14 +36,14 @@ export default {
     addItem() {
       // Limita o número máximo de itens adicionados e
       // proíbe itens vazios de serem criados
-      if (this.items.length < 6 && this.hasTypedItem == true) {
+      if (this.items.length < 6 && this.hasTypedItem === true) {
         this.items.push({
           name: this.itemTyped,
           completed: false
         })
         this.itemTyped = ''
         this.$refs.itemTyped.focus()
-      } else {
+      } else if (this.items.length >= 6) {
         this.noMoreItems = true
         this.itemTyped = ''
         this.$refs.itemTyped.blur()
