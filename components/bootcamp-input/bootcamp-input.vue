@@ -8,7 +8,7 @@
       :autocomplete="autocomplete"
     >
     <button
-      v-if="showButtonInput"
+      v-show="showButtonInput"
     >
       +
     </button>
