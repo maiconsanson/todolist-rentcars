@@ -1,12 +1,12 @@
 <template>
 <ul>
   <li v-for="(item, key) in itemsList" :key="key">
-    {{ item.text }}
+    {{ `${item.text} - ${item.status}` }}
     <span class="options">
-      <button @click="actionItemList(item.id, 'delete')">
+      <button @click="actionItemList('delete', item.id, item.status)">
         -
       </button>
-      <button @click="actionItemList(item.id, item.status == 1 ? '2' : '1')">
+      <button @click="actionItemList('changeState', item.id, item.status == 1 ? '2' : '1')">
         v
       </button>
     </span>

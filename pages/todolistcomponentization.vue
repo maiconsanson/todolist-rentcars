@@ -1,11 +1,13 @@
 <template>
   <div>
     <form
-      id="todolist"
-      @submit.prevent="addItemList()"
+      id="todolistbootcamp"
+      @submit.prevent="addItemList"
     >
       <bootcamp-input
-        state="default"
+        :state="stateInput"
+        :errorMessageBehavior="true"
+        :indexMessageError="indexMessageError"
         autocomplete="on"
         :createButtton="true"
         :translations="{

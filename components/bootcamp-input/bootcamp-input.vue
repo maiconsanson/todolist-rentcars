@@ -9,7 +9,8 @@
     >
     <button
       v-if="showButtonInput"
-    > +
+    >
+      +
     </button>
     <span v-if="getStateError() && !errorMessageBehavior" >
       {{ errorMessage }}

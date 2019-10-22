@@ -33,7 +33,7 @@ export default {
     },
     state: {
       type: String,
-      default: '',
+      default: 'default',
       validator: value => {
         return value.match(/(default|error|warning|success|)/);
       },
@@ -59,7 +59,7 @@ export default {
   watch: {
     state(newValue, _) {
       if (this.getStateError()) {
-        this.txtPlaceholder = this.getMessageError()
+        this.getMessageError()
       }
     },
     valueInput(newValue, _) {
@@ -68,13 +68,15 @@ export default {
   },
   methods: {
     getStateError() {
-      return ['default', 'succes'].includes(this.state)
+      return ['error', 'warning'].includes(this.state)
     },
     getMessageError() {
       if (this.errorMessageBehavior) {
-        this.txtPlaceholder = this.translations[`error${this.indexMessageError}`]
+        this.valueInput = ''
+        this.txtPlaceholder = this.translations[this.indexMessageError]
       } else {
-        this.errorMessage = this.translations[`error${this.indexMessageError}`]
+        this.valueInput = ''
+        this.errorMessage = this.translations[this.indexMessageError]
       }
     },
   },
