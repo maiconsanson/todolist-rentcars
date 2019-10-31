@@ -17,9 +17,11 @@ export default {
     ]
   },
 
-  /* Page Transitions */
+  /*
+  ** Page Transitions
+  ** https://nuxtjs.org/api/pages-transition/
+  */
   pageTransition: {
-    name: 'page',
     mode: ''
   },
 
