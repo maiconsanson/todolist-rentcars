@@ -1,16 +1,38 @@
 <template>
-<ul>
-  <li v-for="(item, key) in itemsList" :key="key">
-    {{ `${item.text} - ${item.status}` }}
-    <span class="options">
-      <button @click="actionItemList('delete', item.id, item.status)">
-        -
-      </button>
-      <button @click="actionItemList('changeState', item.id, item.status == 1 ? '2' : '1')">
-        v
-      </button>
-    </span>
-  </li>
-</ul>
+  <ul class="list">
+    <transition-group name="list-complete">
+      <li
+        v-for="item in itemsList"
+        v-bind:key="item.text"
+        :class="{completed: item.status == '2'}"
+      >
+        {{ `${item.text}` }}
+        <span class="options">
+          <button
+            @click="actionItemList('delete', item.id, item.status)"
+            class="remove-item"
+          >
+            <img
+              class="icon"
+              src="/icon-delete.svg"
+              alt="Delete task"
+            />
+          </button>
+          <button
+            @click="actionItemList('changeState', item.id, item.status == 1 ? '2' : '1')"
+            class="complete-item"
+          >
+            <img
+              class="icon"
+              src="/icon-check.svg"
+              alt="Complete task"
+            />
+          </button>
+        </span>
+      </li>
+    </transition-group>
+  </ul>
 </template>
-<script src="./components.js" />
+
+<script src="./component.js" />
+<style src="./component.scss" lang="scss" scoped />

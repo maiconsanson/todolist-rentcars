@@ -15,7 +15,7 @@
           <span>02/11/2019</span> | <span>Version 1.0</span>
         </div>
         <nuxt-link
-          to="/todolist"
+          to="/todolistcomponentization"
           @mouseover.native="hover = true"
           @mouseleave.native="hover = false"
           class="button--orange"
@@ -29,4 +29,4 @@
 </template>
 
 <script src="./index.js"></script>
-<style src="./index.scss" lang="scss" scoped></style>
+<style src="./index.scss" lang="scss"></style>

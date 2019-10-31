@@ -73,5 +73,8 @@ export default {
       })
       itemsList.status = value.status
     },
+    checkItems() {
+      return this.itemsList.length > 0
+    }
   },
 }

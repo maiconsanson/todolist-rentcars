@@ -53,8 +53,12 @@ export default {
     },
     autocomplete: {
       type: String,
-      default: 'on',
+      default: 'off',
     },
+    hasItems: {
+      type: Boolean,
+      default: false
+    }
   },
   watch: {
     state(newValue, _) {
@@ -79,10 +83,13 @@ export default {
         this.errorMessage = this.translations[this.indexMessageError]
       }
     },
+    hasTypedItem() {
+      return this.valueInput.length > 0  
+    }
   },
   computed: {
     showButtonInput() {
-      return this.createButtton && this.valueInput.length > 0
+      return this.createButtton
     },
   },
 }
