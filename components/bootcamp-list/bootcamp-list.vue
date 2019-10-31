@@ -4,7 +4,8 @@
       <li
         v-for="item in itemsList"
         v-bind:key="item.text"
-        :class="{completed: item.status == '2'}"
+        :class="{'list__item--completed': item.status == '2'}"
+        class="list__item"
       >
         {{ `${item.text}` }}
         <span class="options">

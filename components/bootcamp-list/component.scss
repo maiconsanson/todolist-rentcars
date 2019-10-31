@@ -20,7 +20,7 @@
     z-index: -1;
   }
 
-  li {
+  &__item {
     background: #fff;
     box-shadow: 0 2px 8px rgba(black,0.3);
     list-style: none;
@@ -32,7 +32,7 @@
     transition: all 0.3s ease;
     z-index: 1;
 
-    &.completed {
+    &--completed {
       animation: completed 0.1s 5 ease;
       color: #ccc;
       text-decoration: line-through;
