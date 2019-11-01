@@ -1,6 +1,6 @@
 <template>
   <ul class="list">
-    <transition-group name="list-complete">
+    <transition-group name="list">
       <li
         v-for="item in itemsList"
         v-bind:key="item.text"
@@ -35,5 +35,5 @@
   </ul>
 </template>
 
-<script src="./component.js" />
-<style src="./component.scss" lang="scss" scoped />
+<script src="./bootcamp-list.js" />
+<style src="./bootcamp-list.scss" lang="scss" scoped />

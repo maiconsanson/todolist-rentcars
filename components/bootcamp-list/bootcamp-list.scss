@@ -99,8 +99,8 @@
 ////////////////////////
 // VUE ANIMATION RULES
 ////////////////////////
-.list-complete-enter,
-.list-complete-leave-to {
+.list-enter,
+.list-leave-to {
   opacity: 0;
   transform: translateY(30px);
 }
