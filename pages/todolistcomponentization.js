@@ -6,15 +6,7 @@ export default {
   data() {
     return {
       i: 1,
-      stateInput: 'default',
       itemsList: [],
-      limiteItemsList: 6,
-      valueInput: '',
-      indexMessageError: '',
-      statusItemList: {
-        '1': 'checked',
-        '2': 'unchecked',
-      },
     }
   },
   components: {
@@ -29,36 +21,15 @@ export default {
         }
       },
       deep: true
-    }
+    },
   },
   methods: {
-    addValueInput(value) {
-      this.valueInput = value;
-    },
-    addItemList(event) {
-      if (this.validateInputValue()) {
-        this.itemsList.push({
-          id: this.i++,
-          text: this.valueInput,
-          status: '1'
-        });
-      }
-      setTimeout(() => {
-        event.target.querySelector('input').form.reset()
-      }, 10)
-    },
-    validateInputValue() {
-      if (this.valueInput.replace(/ /g, '').length) {
-        if (this.itemsList.length >= this.limiteItemsList) {
-          this.errorLimiteItemsList()
-          return false
-        }
-        return true
-      }
-    },
-    errorLimiteItemsList() {
-      this.stateInput = 'warning'
-      this.indexMessageError = 'errorWarning'
+    addItemList(value) {
+      this.itemsList.push({
+        id: this.i++,
+        text: value,
+        status: '1'
+      });
     },
     actionItemList(value) {
       if (value.action == 'delete') {
@@ -81,8 +52,5 @@ export default {
       })
       itemsList.status = value.status
     },
-    checkItems() {
-      return this.itemsList.length > 0
-    }
   },
 }

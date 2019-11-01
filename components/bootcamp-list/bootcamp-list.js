@@ -1,14 +1,5 @@
 export default {
   name: 'bootcamp-list',
-  data() {
-    return {
-      actionButton: {
-        action: '',
-        id: '',
-        status: '',
-      },
-    }
-  },
   props: {
     itemsList: {
       type: Array,
@@ -17,9 +8,14 @@ export default {
   },
   methods: {
     actionItemList(action, id, status) {
-      this.actionButton.action = action
-      this.actionButton.id = id
-      this.actionButton.status = status
+      // this.actionButton.action = action
+      // this.actionButton.id = id
+      // this.actionButton.status = status
+      this.actionButton = {
+        action,
+        id,
+        status
+      }
       this.$emit('actionItemList', this.actionButton)
     },
   }

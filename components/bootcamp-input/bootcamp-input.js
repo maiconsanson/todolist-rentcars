@@ -2,96 +2,37 @@ export default {
   name: 'bootcamp-input',
   data() {
     return {
-      txtPlaceholder: '',
       valueInput: '',
-      errorMessage: '',
+      state: 'default',
+      txtPlaceholder: 'Type some fanny tasks!',
+      errorMessage: 'No more items, please!',
     }
-  },
-  mounted() {
-    this.txtPlaceholder = this.translations.placeholder
   },
   props: {
-    typeInput: {
-      type: String,
-      default: 'text',
-      required: false,
-    },
-    createButtton: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-    errorMessageBehavior: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-    indexMessageError:{
-      type: String,
-      default: '',
-      required: false,
-    },
-    state: {
-      type: String,
-      default: 'default',
-      validator: value => {
-        return value.match(/(default|error|warning|success|)/);
-      },
-    },
-    translations: {
+    itemsList: {
       type: Object,
       required: true,
-      validator: function (obj) {
-        const missingProperties = [
-          'label',
-          'placeholder',
-          'errorWarning',
-          'errorAlert',
-        ].filter((property) => !obj.hasOwnProperty(property));
-        return missingProperties.length === 0;
-      },
     },
-    autocomplete: {
-      type: String,
-      default: 'off',
-    },
-    hasItems: {
-      type: Boolean,
-      default: false
-    }
   },
   watch: {
-    state(newValue) {
-      if (this.getStateError()) {
-        this.getMessageError()
-      } else {
-        this.txtPlaceholder = this.translations.placeholder
-      }
+    itemsList(newValue) {
+      this.state = newValue.length >= 6 ? 'warning' : 'default'
     },
-    valueInput(newValue) {
-      this.$emit('valueInput', newValue)
+  },
+  computed: {
+    getMessagePlaceholder() {
+      return this.state == 'default' ? this.txtPlaceholder : this.errorMessage
     },
   },
   methods: {
-    getStateError() {
-      return ['error', 'warning'].includes(this.state)
-    },
-    getMessageError() {
-      if (this.errorMessageBehavior) {
+    addItemList() {
+      if (this.valueInput.replace(/ /g, '').length) {
+        this.$emit('addItemList', this.valueInput)
         this.valueInput = ''
-        this.txtPlaceholder = this.translations[this.indexMessageError]
-      } else {
-        this.valueInput = ''
-        this.errorMessage = this.translations[this.indexMessageError]
       }
     },
-    hasTypedItem() {
-      return this.valueInput.length > 0  
-    }
-  },
-  computed: {
-    showButtonInput() {
-      return this.createButtton
+    validateInputValue() {
+      return this.valueInput.replace(/ /g, '').length == 0 && this.state == 'warning'
     },
   },
 }

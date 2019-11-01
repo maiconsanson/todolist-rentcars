@@ -1,26 +1,30 @@
 <template>
   <div>
-    <label class="title" for="input">
-      {{ `${translations.label}` }}
-    </label>
-    <div class="input-box">
-      <input
-        id="input"
-        :class="{'has-items': hasItems, 'alert': getStateError()}"
-        v-model="valueInput"
-        :type="typeInput"
-        :placeholder="txtPlaceholder"
-        :autocomplete="autocomplete"
-        :disabled="getStateError()"
-      >
-      <button
-        v-show="showButtonInput"
-        :class="{active: hasTypedItem()}"
-        class="add-item"
-      >
-        <img class="icon" src="/icon-plus.svg" alt="Add item" />
-      </button>
-    </div>
+    <form
+      id="todolistbootcamp"
+      @submit.prevent="addItemList"
+    >
+      <label class="title" for="input">
+        What will you do
+      </label>
+      <div class="input-box">
+        <input
+          id="input"
+          :class="{'has-items': hasItems, 'alert': this.state == 'warning'}"
+          v-model="valueInput"
+          type="text"
+          :placeholder="getMessagePlaceholder"
+          autocomplete="off"
+          :disabled="this.state == 'warning'"
+        >
+        <button
+          :class="{active: valueInput.length}"
+          class="add-item"
+        >
+          <img class="icon" src="/icon-plus.svg" alt="Add item" />
+        </button>
+      </div>
+    </form>
   </div>
 </template>
 
