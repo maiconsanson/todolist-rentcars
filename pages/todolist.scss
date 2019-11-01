@@ -145,7 +145,21 @@ button {
     &.completed {
       animation: completed 0.1s 5 ease;
       color: #ccc;
-      text-decoration: line-through;
+      &:hover::after {
+        background: #ccc;
+      }
+      &:after {
+        background: #eaeaea;
+        content: '';
+        display: block;
+        height: 1px;
+        left: 0;
+        position: absolute;
+        transform: translateY(-50%);
+        top: 50%;
+        width: 100%;
+        z-index: 0;
+      }
     }
 
     &:last-child {
@@ -172,9 +186,9 @@ button {
       position: absolute;
       transition: all 0.4s ease;
       transform: translate(-5px, -200%);
-      
       right: 0;
       top: 50%;
+      z-index: 1;
       button {
         background: #222;
         box-sizing: content-box;

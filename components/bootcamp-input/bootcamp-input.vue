@@ -6,16 +6,13 @@
     <div class="input-box">
       <input
         id="input"
-        :class="{'has-items': hasItems}"
+        :class="{'has-items': hasItems, 'alert': getStateError()}"
         v-model="valueInput"
         :type="typeInput"
         :placeholder="txtPlaceholder"
         :autocomplete="autocomplete"
+        :disabled="getStateError()"
       >
-      <!-- 
-        :disabled="quando cai no warning"
-        :class="{'has-items': hasItems(), 'alert': quando cai o warning}"
-      -->
       <button
         v-show="showButtonInput"
         :class="{active: hasTypedItem()}"
@@ -27,5 +24,5 @@
   </div>
 </template>
 
-<script src="./component.js" />
-<style src="./component.scss" lang="scss" scoped />
+<script src="./bootcamp-input.js" />
+<style src="./bootcamp-input.scss" lang="scss" scoped />

@@ -61,12 +61,14 @@ export default {
     }
   },
   watch: {
-    state(newValue, _) {
+    state(newValue) {
       if (this.getStateError()) {
         this.getMessageError()
+      } else {
+        this.txtPlaceholder = this.translations.placeholder
       }
     },
-    valueInput(newValue, _) {
+    valueInput(newValue) {
       this.$emit('valueInput', newValue)
     },
   },

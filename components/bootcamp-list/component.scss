@@ -36,6 +36,21 @@
       animation: completed 0.1s 5 ease;
       color: #ccc;
       text-decoration: line-through;
+      &:hover::after {
+        background: #ccc;
+      }
+      &:after {
+        background: #eaeaea;
+        content: '';
+        display: block;
+        height: 1px;
+        left: 0;
+        position: absolute;
+        transform: translateY(-50%);
+        top: 50%;
+        width: 100%;
+        z-index: 0;
+      }
     }
 
     &:last-child {
@@ -64,6 +79,7 @@
       transition: all 0.3s ease;
       transform: translate(-5px, -200%);
       top: 50%;
+      z-index: 1;
       button {
         background: #222;
         box-sizing: content-box;
